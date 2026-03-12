@@ -1,33 +1,51 @@
 /* 
-  랜딩페이지 전체 구조
+  페이지 전체 구조
 
-  Header                상단 고정 네비게이션
-  Hero                  메인 배너
-  ImageSection          분양 포인트 소개 섹션
-  ContactSection        상담 문의 폼
-  Footer                하단 정보
-  FloatingCallButton    우측 하단 전화 버튼
+  1. Header
+  2. Hero
+  3. 입지환경
+  4. 단지안내
+  5. 평면안내
+  6. 방문예약
+  7. Footer
+  8. 우측 하단 방문예약 버튼
 */
 
+import "./App.css";
+
 import Header from "./components/Header";
-import Hero from "./components/Hero";
+import Hero from "./components/HeroSection";
 import ImageSection from "./components/ImageSection";
+import FloorplanSection from "./components/FloorplanSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import FloatingCallButton from "./components/FloatingCallButton";
 
-import "./App.css";
+import { locationContent, complexContent } from "./data/siteContent";
 
 function App() {
   return (
     <>
       <Header />
       <Hero />
-      <ImageSection />
+
+      <ImageSection
+        sectionId={locationContent.sectionId}
+        sectionTitle={locationContent.sectionTitle}
+        sectionDescription={locationContent.sectionDescription}
+        items={locationContent.items}
+      />
+
+      <ImageSection
+        sectionId={complexContent.sectionId}
+        sectionTitle={complexContent.sectionTitle}
+        sectionDescription={complexContent.sectionDescription}
+        items={complexContent.items}
+      />
+
+      <FloorplanSection />
       <ContactSection />
       <Footer />
-
-      {/* 항상 화면 우측 하단에 떠있는 전화 상담 버튼 */}
       <FloatingCallButton />
     </>
   );
