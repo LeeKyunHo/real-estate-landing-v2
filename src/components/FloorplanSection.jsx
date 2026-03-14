@@ -1,5 +1,6 @@
 /* 
   평면안내 전용 섹션
+  여러 장의 평면 이미지를 순서대로 출력할 수 있도록 구성
 */
 
 import { floorplanContent } from "../data/siteContent";
@@ -14,20 +15,24 @@ export default function FloorplanSection() {
         </p>
       </div>
 
-      <article className="content-card content-card--single">
-        <div className="content-card__image-wrap">
-          <img
-            src={floorplanContent.imagePath}
-            alt={floorplanContent.title}
-            className="content-card__image"
-          />
-        </div>
+      <div className="content-card-list">
+        {floorplanContent.items.map((item, index) => (
+          <article className="content-card content-card--single" key={`floorplan-${index}`}>
+            <div className="content-card__image-wrap">
+              <img
+                src={item.imagePath}
+                alt={item.title}
+                className="content-card__image"
+              />
+            </div>
 
-        <div className="content-card__body">
-          <h3 className="content-card__title">{floorplanContent.title}</h3>
-          <p className="content-card__text">{floorplanContent.detail}</p>
-        </div>
-      </article>
+            <div className="content-card__body">
+              <h3 className="content-card__title">{item.title}</h3>
+              <p className="content-card__text">{item.detail}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

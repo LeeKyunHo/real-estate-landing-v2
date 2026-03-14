@@ -86,9 +86,18 @@ export const floorplanContent = {
   sectionId: "floorplan",
   sectionTitle: "평면안내",
   sectionDescription: "대표 평면 정보를 통해 공간 구성을 확인하실 수 있습니다.",
-  title: "대표 평면 안내",
-  detail: "실제 평면 구성은 방문예약 후 상세 안내를 받으실 수 있습니다.",
-  imagePath: "/images/floorplan/floorplan-main.jpg",
+  items: [
+    {
+      title: "대표 평면 안내",
+      detail: "실제 평면 구성은 방문예약 후 상세 안내를 받으실 수 있습니다.",
+      imagePath: "/images/floorplan/floorplan-main.jpg",
+    },
+    {
+      title: "추가 평면 안내",
+      detail: "추가 평면 구성도 함께 확인하실 수 있습니다.",
+      imagePath: "/images/floorplan/floorplan-main2.jpg",
+    },
+  ],
 };
 
 /* 
