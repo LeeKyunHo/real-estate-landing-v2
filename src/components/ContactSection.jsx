@@ -121,19 +121,20 @@ export default function ContactSection() {
   className="reservation-form__field-wrap"
   onClick={handleDateWrapClick}
 >
-  {!formData.visitDate && (
-    <span className="reservation-form__date-placeholder">
-      방문 예약날짜 선택
-    </span>
-  )}
-
   <input
     ref={dateInputRef}
-    type="date"
+    type={formData.visitDate ? "date" : "text"}
     name="visitDate"
     required
     value={formData.visitDate}
     onChange={handleChange}
+    onFocus={(e) => {
+      e.target.type = "date";
+      if (typeof e.target.showPicker === "function") {
+        e.target.showPicker();
+      }
+    }}
+    placeholder="방문 예약날짜 선택"
     className="reservation-form__date-input"
   />
 </div>
