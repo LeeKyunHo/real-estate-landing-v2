@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 /*
   방문예약 섹션
@@ -19,6 +19,30 @@ export default function ContactSection() {
   /* 예약 완료 모달 열림 상태 */
   const [isCompleteOpen, setIsCompleteOpen] = useState(false);
 
+  /* 날짜 input 직접 제어용 ref */
+  const dateInputRef = useRef(null);
+
+  /* 방문 가능 시간 옵션 */
+  const timeOptions = [
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "12:30",
+    "13:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+  ];
+
   /* 입력값 변경 처리 */
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -33,7 +57,6 @@ export default function ContactSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    /* 현재 단계에서는 콘솔 확인 + 완료 모달 표시 */
     console.log("예약 데이터:", formData);
 
     setIsCompleteOpen(true);
@@ -42,6 +65,15 @@ export default function ContactSection() {
   /* 완료 모달 닫기 */
   const handleCloseModal = () => {
     setIsCompleteOpen(false);
+  };
+
+  /* 날짜 입력창 전체 클릭 시 선택창 열기 */
+  const handleDateWrapClick = () => {
+    if (dateInputRef.current) {
+      dateInputRef.current.showPicker?.();
+      dateInputRef.current.focus();
+      dateInputRef.current.click();
+    }
   };
 
   return (
@@ -84,23 +116,35 @@ export default function ContactSection() {
               onChange={handleChange}
             />
 
-            {/* 방문 예약일 입력 */}
-            <input
-              type="date"
-              name="visitDate"
-              required
-              value={formData.visitDate}
-              onChange={handleChange}
-            />
+            {/* 방문 예약일 */}
+            <div
+              className="reservation-form__field-wrap"
+              onClick={handleDateWrapClick}
+            >
+              <input
+                ref={dateInputRef}
+                type="date"
+                name="visitDate"
+                required
+                value={formData.visitDate}
+                onChange={handleChange}
+              />
+            </div>
 
-            {/* 방문 예약시간 입력 */}
-            <input
-              type="time"
+            {/* 방문 예약시간: 드롭다운으로 변경 */}
+            <select
               name="visitTime"
               required
               value={formData.visitTime}
               onChange={handleChange}
-            />
+            >
+              <option value="">방문 예약시간 선택</option>
+              {timeOptions.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))}
+            </select>
 
             {/* 선택 입력 */}
             <textarea
@@ -122,7 +166,7 @@ export default function ContactSection() {
               <span>개인정보 수집 및 이용에 동의합니다.</span>
             </label>
 
-            <button type="submit">방문예약 신청하기</button>
+            <button type="submit">방문 예약 신청하기</button>
           </form>
 
           {/* 운영 안내 문구 */}
