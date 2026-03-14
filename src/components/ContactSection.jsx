@@ -68,13 +68,15 @@ export default function ContactSection() {
   };
 
   /* 날짜 입력창 전체 클릭 시 선택창 열기 */
-  const handleDateWrapClick = () => {
-    if (dateInputRef.current) {
-      dateInputRef.current.showPicker?.();
-      dateInputRef.current.focus();
-      dateInputRef.current.click();
-    }
-  };
+const handleDateWrapClick = () => {
+  if (!dateInputRef.current) return;
+
+  dateInputRef.current.focus();
+
+  if (typeof dateInputRef.current.showPicker === "function") {
+    dateInputRef.current.showPicker();
+  }
+};
 
   return (
     <>
@@ -116,25 +118,25 @@ export default function ContactSection() {
               onChange={handleChange}
             />
 
-           {/* 방문 예약일 */}
+         
+{/* 방문 예약일 */}
 <div
-  className="reservation-form__field-wrap"
+  className="reservation-form__field-wrap reservation-form__field-wrap--date"
   onClick={handleDateWrapClick}
 >
+  {!formData.visitDate && (
+    <span className="reservation-form__date-fake-placeholder">
+      방문 예약날짜 선택
+    </span>
+  )}
+
   <input
     ref={dateInputRef}
-    type={formData.visitDate ? "date" : "text"}
+    type="date"
     name="visitDate"
     required
     value={formData.visitDate}
     onChange={handleChange}
-    onFocus={(e) => {
-      e.target.type = "date";
-      if (typeof e.target.showPicker === "function") {
-        e.target.showPicker();
-      }
-    }}
-    placeholder="방문 예약날짜 선택"
     className="reservation-form__date-input"
   />
 </div>
