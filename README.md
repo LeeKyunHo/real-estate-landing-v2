@@ -8,13 +8,12 @@
 ## Demo
 
 Live Demo  
-https://your-vercel-url.vercel.app
+https://gj-modelhouse.kro.kr/
 
 ---
 
 ## Screenshot
 
-![landing-page](./screenshot.png)
 
 ---
 
