@@ -25,6 +25,13 @@ export default async function handler(req, res) {
     });
 
     if (!name || !phone || !visitDate || !visitTime) {
+      const phoneRegex = /^010-\d{4}-\d{4}$/;
+
+      if (!phoneRegex.test(phone)) {
+  return res.status(400).json({
+    message: "전화번호 형식이 올바르지 않습니다.",
+  });
+}
 
       console.log("필수값 누락");
 

@@ -45,18 +45,37 @@ export default function ContactSection() {
 
   /* 입력값 변경 처리 */
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const { name, value, type, checked } = e.target;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+  let newValue = value;
+
+  if (name === "phone") {
+    const numbers = value.replace(/\D/g, "");
+
+    if (numbers.length <= 3) {
+      newValue = numbers;
+    } else if (numbers.length <= 7) {
+      newValue = `${numbers.slice(0,3)}-${numbers.slice(3)}`;
+    } else {
+      newValue = `${numbers.slice(0,3)}-${numbers.slice(3,7)}-${numbers.slice(7,11)}`;
+    }
+  }
+
+  setFormData((prev) => ({
+    ...prev,
+    [name]: type === "checkbox" ? checked : newValue,
+  }));
+};
 
   /* 폼 제출 처리 */
   const handleSubmit = async (e) => {
   e.preventDefault();
 
+  if (!validatePhone(formData.phone)) {
+    alert("전화번호 형식이 올바르지 않습니다. (010-1234-5678)");
+    return;
+  } 
+  
   console.log("예약 폼 제출 시작");
   console.log("전송 데이터:", formData);
 
