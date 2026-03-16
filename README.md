@@ -1,185 +1,131 @@
-# Real Estate Landing Page
+# Model House Reservation Landing Page
 
-부동산 모델하우스 방문예약 및 분양 안내를 위한 **랜딩 페이지 프로젝트**입니다.  
-React + Vite 기반으로 제작되었으며 **모바일 환경에서도 사용 가능한 반응형 구조**로 구성되어 있습니다.
-
-현재 프로젝트는 **Vercel을 통해 배포된 상태**입니다.
+부동산 모델하우스 방문 예약을 위한 랜딩페이지 웹 애플리케이션입니다.  
+사용자가 예약 정보를 입력하면 서버리스 API를 통해 관리자 이메일로 예약 정보가 전달됩니다.
 
 ---
 
-# Table of Contents
+## Demo
 
-- [소개](#소개)
-- [주요 기능](#주요-기능)
-- [프로젝트 구조](#프로젝트-구조)
-- [실행 방법](#실행-방법)
-- [배포](#배포)
-- [사용 기술](#사용-기술)
-- [현재 구현 상태](#현재-구현-상태)
-- [향후 개선 예정](#향후-개선-예정)
-- [English Summary](#english-summary)
+Live Demo  
+https://gj-modelhouse.kro.kr/
 
 ---
 
-# 소개
-
-이 프로젝트의 목적
-
-- 모델하우스 방문예약 유도 랜딩페이지 제작
-- 분양 정보 및 이미지를 쉽게 교체할 수 있는 구조 설계
-- React 기반 프론트엔드 개발 및 실제 배포 경험 축적
+## Screenshot
+<p align="center">
+  <img width="45%" src="https://github.com/user-attachments/assets/7f11b45a-be1f-42f5-be03-a9ce9c03a363">
+  <img width="45%" src="https://github.com/user-attachments/assets/ada379ff-8ee5-4443-a45a-1347960ce992">
+</p>
 
 ---
 
-# 주요 기능
+## Features
 
-## 랜딩 페이지 구조
-
-- Hero 메인 배너
-- 스크롤 유도 애니메이션
-- 섹션 기반 랜딩 구조
-
-## 정보 안내 섹션
-
-### 입지환경
-- 입지 개요
-- 프리미엄 환경
-
-### 단지안내
-- 단지 배치도
-- 커뮤니티 안내
-- 부대시설 안내
-
-### 평면안내
-- 대표 평면 이미지
-- 추가 평면 이미지
-
-## 방문예약 기능
-
-- 방문예약 입력 폼
-- 방문 예약일 선택
-- 방문 예약시간 선택 (30분 단위)
-- 개인정보 동의 체크
-- 예약 완료 모달 표시
-
-## UI 기능
-
-- 상단 메뉴 스크롤 이동
-- 우측 하단 방문예약 버튼
-- 반응형 UI (모바일 지원)
+- 반응형 랜딩페이지 UI
+- 방문 예약 폼 입력
+- 날짜 및 시간 선택
+- 서버리스 API를 통한 데이터 처리
+- Resend 이메일 API를 이용한 예약 알림
+- Vercel을 통한 실제 배포
 
 ---
 
-# 프로젝트 구조
-real-estate-landing
+## Tech Stack
 
-public/
-images/
-hero/
-location/
-complex/
-floorplan/
-favicon.png
-
-src/
-components/
-Header.jsx
-HeroSection.jsx
-ImageSection.jsx
-FloorplanSection.jsx
-ContactSection.jsx
-FloatingCallButton.jsx
-Footer.jsx
-
-data/
-siteContent.js
-
-App.jsx
-App.css
-
-
----
-
-# 실행 방법
-
-## 프로젝트 실행
-
-
-npm install
-npm run dev
-
-
----
-
-# 배포
-
-현재 프로젝트는 **Vercel을 통해 자동 배포**되고 있습니다.
-
-배포 흐름
-
-
-GitHub Push
-↓
-Vercel Build
-↓
-자동 배포
-
-
----
-
-# 사용 기술
-
+### Frontend
 - React
 - Vite
-- JavaScript
 - CSS
+
+### Backend
+- Vercel Serverless Functions
+
+### External Service
+- Resend Email API
+
+### Deployment
 - Vercel
 
 ---
 
-# 현재 구현 상태
+## Architecture
 
-완료된 기능
+서비스 흐름은 다음과 같습니다.
 
-- 랜딩페이지 전체 구조 구현
-- 반응형 UI 적용
-- 방문예약 폼 UI
-- 방문 예약일 선택
-- 방문 예약시간 선택
-- 예약 완료 모달
-- 평면안내 다중 이미지 구조
-- favicon 및 사이트 탭 제목 적용
+```
+User
+ ↓
+React Landing Page
+ ↓
+Reservation Form
+ ↓
+Vercel Serverless API
+ ↓
+Resend Email API
+ ↓
+Admin Email
+```
 
----
-
-# 향후 개선 예정
-
-## 예약 기능
-
-- 방문예약 데이터 이메일 전송
-- 문자(SMS) 알림 기능
-- 예약 데이터 저장
-
-## 운영 기능
-
-- 관리자 페이지
-- 상담 관리 시스템
-- 이미지 업로드 기능
+사용자가 예약 폼을 제출하면 서버리스 API가 요청을 처리하고  
+Resend 이메일 서비스를 통해 관리자에게 예약 정보가 전달됩니다.
 
 ---
 
-# English Summary
+## Key Implementation
 
-This project is a **real estate model house reservation landing page built with React and Vite**.
+### Serverless API
 
-Main features:
+예약 데이터는 Vercel Serverless Function을 통해 처리됩니다.
 
-- Hero banner section
-- Section-based landing layout
-- Location / Complex / Floorplan information
-- Reservation form with date & time selection
-- Reservation confirmation modal
-- Floating call button
-- Responsive UI
+- 클라이언트에서 예약 데이터를 전달
+- 서버리스 API에서 데이터 처리
+- Resend API 호출
+- 관리자 이메일 발송
 
-The project is currently **deployed using Vercel**.
+### Environment Variables
+
+이메일 서비스 API 키는 환경 변수로 관리합니다.
+
+```
+RESEND_API_KEY
+```
+
+---
+
+## What I Learned
+
+이 프로젝트를 통해 다음을 경험했습니다.
+
+- React 기반 랜딩페이지 구현
+- 사용자 입력 데이터 처리
+- 서버리스 API 구조 이해
+- 외부 API 연동
+- 환경 변수 관리
+- 실제 웹 서비스 배포 경험
+
+---
+
+## Future Improvements
+
+현재 프로젝트는 이메일 알림 중심 구조입니다.  
+추후 다음 기능을 추가할 수 있습니다.
+
+- 예약 데이터 DB 저장
+- 스팸 방지 (Captcha)
+- 관리자 예약 관리 페이지
+- 에러 로그 및 모니터링
+
+---
+
+## Deployment
+
+프로젝트는 Vercel을 통해 배포되었습니다.
+
+```
+Frontend + Serverless API
+→ Vercel Deployment
+```
+
+GitHub  
+https://github.com/your-github
