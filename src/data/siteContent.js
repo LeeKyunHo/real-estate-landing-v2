@@ -17,7 +17,7 @@ export const siteMenu = [
 */
 export const headerContent = {
   logoText: "힐스테이트 중외공원",
-  phoneText: "062-714-1069",
+  phoneText: "문의 : 062-714-1069",
 };
 
 /* 
