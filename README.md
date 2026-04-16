@@ -1,153 +1,234 @@
-# Model House Reservation Landing Page
+# Real Estate Landing Page Improvement
 
-부동산 모델하우스 방문 예약을 위한 랜딩페이지 웹 애플리케이션입니다.  
-사용자가 입력한 예약 정보를 서버리스 API를 통해 관리자 이메일로 전달하는 구조로 구현했습니다.
+기존 정보형 부동산 홈페이지를
+**전환 중심 랜딩페이지 구조로 개선한 프로젝트**입니다.
 
 ---
 
 ## 📌 Table of Contents
 
-- [Demo](#demo)
-- [Screenshot](#screenshot)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Architecture](#architecture)
-- [Key Implementation](#key-implementation)
-- [Trouble Shooting](#trouble-shooting)
-- [What I Learned](#what-i-learned)
-- [Current Status](#current-status)
-- [Future Improvements](#future-improvements)
+* [Demo](#demo)
+* [Project Background](#project-background)
+* [Before vs After](#before-vs-after)
+* [Key Changes](#key-changes)
+* [Tech Stack](#tech-stack)
+* [Architecture](#architecture)
+* [Key Implementation](#key-implementation)
+* [Trouble Shooting](#trouble-shooting)
+* [What I Learned](#what-i-learned)
+* [Current Status](#current-status)
+* [Future Improvements](#future-improvements)
 
 ---
 
 ## Demo
 
-Live Demo  
+### Before (기존 정보형 페이지)
+
 https://gj-modelhouse.kro.kr/
 
----
+### After (개선된 랜딩페이지)
 
-## Screenshot
-
-<p align="center">
-  <img width="45%" src="https://github.com/user-attachments/assets/7f11b45a-be1f-42f5-be03-a9ce9c03a363">
-  <img width="45%" src="https://github.com/user-attachments/assets/ada379ff-8ee5-4443-a45a-1347960ce992">
-</p>
+(추후 추가 예정)
 
 ---
 
-## Features
+## Project Background
 
-- 반응형 랜딩페이지 UI 구현  
-- 방문 예약 입력 폼 (이름 / 연락처 / 날짜 / 시간)  
-- 입력값 유효성 검사  
-- 서버리스 API를 통한 데이터 처리  
-- Resend API 기반 관리자 이메일 자동 발송  
-- Vercel을 통한 배포 및 운영  
+기존 사이트는 정보 전달 중심 구조로 되어 있어
+사용자가 실제로 “방문 예약” 행동을 하기까지의 흐름이 약했습니다.
+
+이에 따라 다음과 같은 문제를 개선하고자 했습니다:
+
+* CTA(Call To Action) 부족
+* 전환 유도 구조 부재
+* 모바일 UX 최적화 미흡
+* 사용자 행동 흐름 설계 부족
+
+---
+
+## Before vs After
+
+### Before
+
+* 정보 나열형 구조
+* CTA가 하단에만 존재
+* 사용자 행동 유도 약함
+
+### After
+
+* 랜딩페이지 구조 적용
+* CTA 반복 배치
+* 하단 고정 버튼 추가
+* 즉시 상담 유도 UX 적용
+
+---
+
+## Key Changes
+
+### 1. 하단 고정 CTA (Bottom CTA)
+
+* 스크롤과 관계없이 항상 노출
+* 전화 / 카카오톡 / 방문예약 버튼 제공
+
+---
+
+### 2. 구조 개선 (정보 → 전환 중심)
+
+* Hero 영역에 CTA 추가 예정
+* 중간 CTA 섹션 반복 배치 예정
+* 사용자 행동 흐름 중심 구조 설계
+
+---
+
+### 3. 프로젝트 구조 분리
+
+기존 버전과 개선 버전을 분리하여 관리
+
+```
+real-estate-landing       (Before)
+real-estate-landing-v2    (After)
+```
+
+---
+
+### 4. Git 브랜치 전략
+
+```
+main            → 개선 작업
+before-landing  → 기존 버전 보관
+```
 
 ---
 
 ## Tech Stack
 
-### Frontend
-- React  
-- Vite  
-- CSS  
-
-### Backend
-- Vercel Serverless Functions  
-
-### External Service
-- Resend Email API  
-
-### Deployment
-- Vercel  
+* React
+* Vite
+* CSS (Custom Styling)
+* Vercel (배포 예정)
 
 ---
 
 ## Architecture
 
-User
-↓
-React Landing Page
-↓
-Reservation Form
-↓
-Vercel Serverless API
-↓
-Resend Email API
-↓
-Admin Email
-
+```
+App
+ ├── Header
+ ├── Hero
+ ├── ImageSection (입지 / 단지)
+ ├── FloorplanSection
+ ├── ContactSection
+ ├── Footer
+ └── BottomCTA (고정 버튼)
+```
 
 ---
 
 ## Key Implementation
 
-### Serverless API
+### Bottom CTA 구현
 
-- 별도의 백엔드 서버 없이 Serverless Function으로 API 구성  
-- 클라이언트 요청 → 서버리스 함수 → 이메일 API 호출 구조  
+```jsx
+<div className="bottom-cta">
+  <a href="tel:010-xxxx-xxxx">전화 상담</a>
+  <a href="https://open.kakao.com/xxxx" target="_blank">
+    카카오톡 상담
+  </a>
+  <a href="#contact">방문예약</a>
+</div>
+```
 
-### Email Integration
+---
 
-- Resend API를 활용하여 예약 발생 시 관리자에게 자동 메일 발송  
+### 고정 위치 스타일
 
-### Validation
-
-- 입력값 검증을 통해 잘못된 데이터 요청 차단  
+```css
+.bottom-cta {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  z-index: 99999;
+}
+```
 
 ---
 
 ## Trouble Shooting
 
-### API 요청 실패 시 사용자 반응 없음
+### 1. 하단 CTA가 보이지 않는 문제
 
-문제  
-- 요청 실패 시 UI 변화 없음  
+**문제**
 
-원인  
-- 에러 핸들링 미구현  
+* 화면에서는 보이지 않지만 DevTools에서는 확인됨
 
-해결  
-- try-catch 추가 및 사용자 메시지 표시  
+**원인**
+
+* CSS 적용 문제 또는 레이아웃 충돌
+
+**해결**
+
+* `position: fixed` 및 `z-index` 재설정
+* height 명시적으로 지정
 
 ---
 
-### Serverless 함수 미동작
+### 2. 화면이 하얘지는 문제
 
-문제  
-- 배포 후 API 호출 실패  
+**문제**
 
-원인  
-- `/api` 디렉토리 구조 오류  
+* 특정 컴포넌트 주석 처리 후 전체 화면 렌더링 실패
 
-해결  
-- Vercel 규칙에 맞게 구조 수정 후 재배포  
+**원인**
+
+* 정의되지 않은 컴포넌트 사용 (`FloatingCallButton`)
+
+**해결**
+
+* import 및 JSX 동시 제거
+
+---
+
+### 3. Git 구조 문제
+
+**문제**
+
+* 프로젝트 내부에 v2 폴더 생성
+
+**원인**
+
+* 레포지토리 복사 위치 오류
+
+**해결**
+
+* 프로젝트를 동일 레벨로 분리
 
 ---
 
 ## What I Learned
 
-- 서버리스 아키텍처 구조 이해  
-- 프론트엔드와 API 간 데이터 흐름 설계  
-- 외부 API 연동 및 에러 처리 경험  
-- 환경 변수 기반 보안 관리  
-- 실제 서비스 배포 경험  
+* 랜딩페이지는 단순 UI가 아니라 **전환 설계**가 핵심
+* CTA 배치 위치에 따라 UX가 크게 달라짐
+* Git 브랜치와 프로젝트 분리 전략의 중요성
+* 디버깅 시 “렌더링 vs 스타일”을 구분하는 방법
 
 ---
 
 ## Current Status
 
-- 대표번호 수정 완료  
-- 이메일 전송 정상 동작  
-- 실제 운영 중  
+* 프로젝트 구조 분리 완료
+* Bottom CTA 구현 완료
+* 기존 기능 안정화 완료
 
 ---
 
 ## Future Improvements
 
-- 예약 데이터 DB 저장  
-- 관리자 페이지 구축  
-- CAPTCHA 적용 (스팸 방지)  
-- 로그 및 모니터링 추가  
+* Hero CTA 추가
+* 중간 CTA 섹션 구성
+* 사용자 후기 / 신뢰 요소 추가
+* 모바일 UX 최적화
+* 실제 전환 데이터 기반 개선
+
+---
