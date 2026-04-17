@@ -611,5 +611,15 @@ img {
   }
   .reservation-form__date-fake-placeholder {
     display: block;}
+ .bottom-cta {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: red;
+
+  display: flex;   /* 이걸 항상 적용 */
+  z-index: 9999;
+}
 
 }

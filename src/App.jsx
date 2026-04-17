@@ -19,7 +19,8 @@ import ImageSection from "./components/ImageSection";
 import FloorplanSection from "./components/FloorplanSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
-import FloatingCallButton from "./components/FloatingCallButton";
+// import FloatingCallButton from "./components/FloatingCallButton";
+import BottomCTA from "./components/BottomCTA";
 
 import { locationContent, complexContent } from "./data/siteContent";
 
@@ -46,7 +47,8 @@ function App() {
       <FloorplanSection />
       <ContactSection />
       <Footer />
-      <FloatingCallButton />
+      {/* <FloatingCallButton /> */}
+      <BottomCTA />
     </>
   );
 }
