@@ -495,6 +495,44 @@ img {
   font-size: 15px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
+.bottom-cta {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 9999;
+}
+
+/* 공통 버튼 */
+.bottom-cta a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* 전화 */
+.cta-btn.call {
+  background: #111;
+  color: #fff;
+}
+
+/* 카카오 */
+.cta-btn.kakao {
+  background: #FEE500;
+  color: #111;
+}
+
+/* 예약 */
+.cta-btn.reserve {
+  background: #caa66a;
+  color: #fff;
+}
 
 /* =========================
    반응형
@@ -611,15 +649,6 @@ img {
   }
   .reservation-form__date-fake-placeholder {
     display: block;}
- .bottom-cta {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background: red;
 
-  display: flex;   /* 이걸 항상 적용 */
-  z-index: 9999;
-}
 
 }
