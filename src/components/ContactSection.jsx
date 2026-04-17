@@ -135,7 +135,7 @@ const handleDateWrapClick = () => {
 
   return (
     <>
-      <section id="contact" className="reservation-section">
+      <section id="reservation" className="reservation-section">
         <div className="reservation-section__inner">
           <p className="reservation-section__small-text">방문예약 / 상담신청</p>
 

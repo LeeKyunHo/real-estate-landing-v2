@@ -14,7 +14,7 @@ export default function BottomCTA() {
         카카오톡 상담
       </a>
 
-      <a href="#contact" className="cta-btn reserve">
+      <a href="#reservation" className="cta-btn reserve">
         방문예약
       </a>
     </div>
