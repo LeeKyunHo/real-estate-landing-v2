@@ -2,7 +2,7 @@ export default function BottomCTA() {
   return (
     <div className="bottom-cta">
       <a href="tel:18440729" className="cta-btn call">
-        대표번호 1844-0729
+        대표번호 : 1844-0729
       </a>
 
       <a
