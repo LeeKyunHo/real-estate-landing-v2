@@ -6,7 +6,7 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      <p>힐스테이트 중외공원 방문예약 안내 페이지</p>
+      <p>송암공원 중흥 sk뷰 방문예약 안내 페이지</p>
     </footer>
   );
 }

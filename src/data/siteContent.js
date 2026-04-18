@@ -16,7 +16,7 @@ export const siteMenu = [
   대표번호는 아직 확정 전이므로 임시 문구 사용
 */
 export const headerContent = {
-  logoText: "힐스테이트 중외공원",
+  logoText: "송암공원 중흥 sk뷰",
   // phoneText: "문의 : 1844-0729",
 };
 
@@ -26,7 +26,7 @@ export const headerContent = {
 */
 export const heroContent = {
   subtitle: "모델하우스 방문예약 접수중",
-  title: "힐스테이트 중외공원",
+  title: "송암공원 중흥 sk뷰",
   description: "방문예약 등록을 통해 분양 정보와 상담 일정을 빠르게 안내받으실 수 있습니다.",
   buttonText: "방문예약 신청",
   imagePath: "/images/hero/hero-main.jpg",
@@ -46,10 +46,15 @@ export const locationContent = {
       imagePath: "/images/location/location-overview.jpg",
     },
     {
-      title: "프리미엄 환경",
-      description: "공원, 교육, 문화 인프라를 중심으로 입지 가치를 확인할 수 있습니다.",
-      imagePath: "/images/location/location-premium.jpg",
-    },
+  title: "프리미엄 환경 1",
+  description: "공원, 교육, 문화 인프라를 중심으로 입지 가치를 확인할 수 있습니다.",
+  imagePath: "/images/location/location-premium.jpg",
+},
+{
+  title: "프리미엄 환경 2",
+  description: "공원, 교육, 문화 인프라를 중심으로 입지 가치를 확인할 수 있습니다.",
+  imagePath: "/images/location/location-premium-2.jpg",
+},
   ],
 };
 
@@ -87,17 +92,27 @@ export const floorplanContent = {
   sectionTitle: "평면안내",
   sectionDescription: "대표 평면 정보를 통해 공간 구성을 확인하실 수 있습니다.",
   items: [
-    {
-      title: "대표 평면 안내",
-      detail: "실제 평면 구성은 방문예약 후 상세 안내를 받으실 수 있습니다.",
-      imagePath: "/images/floorplan/floorplan-main.jpg",
-    },
-    {
-      title: "추가 평면 안내",
-      detail: "추가 평면 구성도 함께 확인하실 수 있습니다.",
-      imagePath: "/images/floorplan/floorplan-main2.jpg",
-    },
-  ],
+  {
+    title: "평면 1",
+    detail: "대표 평면 구성입니다.",
+    imagePath: "/images/floorplan/floorplan.jpg",
+  },
+  {
+    title: "평면 2",
+    detail: "실용적인 구조를 확인할 수 있습니다.",
+    imagePath: "/images/floorplan/floorplan-2.jpg",
+  },
+  {
+    title: "평면 3",
+    detail: "다양한 공간 활용이 가능한 평면입니다.",
+    imagePath: "/images/floorplan/floorplan-3.jpg",
+  },
+  {
+    title: "평면 4",
+    detail: "추가 선택 가능한 평면 구성입니다.",
+    imagePath: "/images/floorplan/floorplan-4.jpg",
+  },
+],
 };
 
 /* 

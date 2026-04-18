@@ -12,7 +12,7 @@
 */
 
 import "./App.css";
-
+import EventPopup from "./components/EventPopup";
 import Header from "./components/Header";
 import Hero from "./components/HeroSection";
 import ImageSection from "./components/ImageSection";
@@ -27,6 +27,7 @@ import { locationContent, complexContent } from "./data/siteContent";
 function App() {
   return (
     <>
+      <EventPopup />
       <Header />
       <Hero />
 

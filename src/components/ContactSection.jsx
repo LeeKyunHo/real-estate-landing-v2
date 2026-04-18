@@ -149,7 +149,7 @@ const handleDateWrapClick = () => {
 
           {/* 연락 가능 시간 안내 */}
           <p className="reservation-section__contact-time">
-            상담 가능 시간 : 매일 10:00 ~ 18:00
+            모델하우스 방문가능 시간 : 매일 10:00 ~ 18:00
           </p>
 
           <form className="reservation-form" onSubmit={handleSubmit}>

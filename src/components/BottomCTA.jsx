@@ -2,11 +2,11 @@ export default function BottomCTA() {
   return (
     <div className="bottom-cta">
       <a href="tel:18440729" className="cta-btn call">
-        대표번호 : 1844-0729
+        1844-0729
       </a>
 
       <a
-        href="https://open.kakao.com/o/soqX7s1h"
+        href="https://open.kakao.com/o/sRidBVqi"
         target="_blank"
         rel="noopener noreferrer"
         className="cta-btn kakao"
