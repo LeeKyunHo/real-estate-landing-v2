@@ -4,30 +4,9 @@
 */
 
 import { heroContent } from "../data/siteContent";
+import { scrollToSection } from "../utils/scroll";
 
 export default function Hero() {
-  const moveToReservation = () => {
-    const targetElement = document.getElementById("reservation");
-
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
-  const moveToNextSection = () => {
-    const targetElement = document.getElementById("location");
-
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
   return (
     <section
       id="home"
@@ -44,7 +23,7 @@ export default function Hero() {
         <button
           className="hero__button"
           type="button"
-          onClick={moveToReservation}
+          onClick={() => scrollToSection("reservation")}
         >
           {heroContent.buttonText}
         </button>
@@ -53,7 +32,7 @@ export default function Hero() {
         <button
           className="scroll-indicator"
           type="button"
-          onClick={moveToNextSection}
+          onClick={() => scrollToSection("location")}
           aria-label="아래로 스크롤"
         >
           ↓

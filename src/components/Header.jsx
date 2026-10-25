@@ -1,46 +1,41 @@
 /* 
   상단 고정 헤더
-  메뉴 클릭 시 해당 섹션으로 부드럽게 이동
+  메뉴 클릭 시 헤더 높이를 계산하여 부드럽고 정확하게 스크롤 이동
 */
 
 import { headerContent, siteMenu } from "../data/siteContent";
+import { scrollToSection } from "../utils/scroll";
 
 export default function Header() {
-  const moveToSection = (targetId) => {
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
   return (
     <header className="header">
-      <button
-        className="header__logo"
-        onClick={() => moveToSection("home")}
-        type="button"
-      >
-        {headerContent.logoText}
-      </button>
+      <div className="header__inner">
+        <button
+          className="header__logo"
+          onClick={() => scrollToSection("home")}
+          type="button"
+          aria-label="홈으로 이동"
+        >
+          {headerContent.logoText}
+        </button>
 
-      <nav className="header__nav">
-        {siteMenu.map((menuItem) => (
-          <button
-            key={menuItem.targetId}
-            className="header__nav-button"
-            type="button"
-            onClick={() => moveToSection(menuItem.targetId)}
-          >
-            {menuItem.label}
-          </button>
-        ))}
-      </nav>
+        <nav className="header__nav" aria-label="메인 메뉴">
+          {siteMenu.map((menuItem) => (
+            <button
+              key={menuItem.targetId}
+              className="header__nav-button"
+              type="button"
+              onClick={() => scrollToSection(menuItem.targetId)}
+            >
+              {menuItem.label}
+            </button>
+          ))}
+        </nav>
 
-      <div className="header__phone">{headerContent.phoneText}</div>
+        {headerContent.phoneText && (
+          <div className="header__phone">{headerContent.phoneText}</div>
+        )}
+      </div>
     </header>
   );
 }
